@@ -1,0 +1,5 @@
+name: theme_plugin
+title: Theme Switcher
+description: Allows users to change their AgentZero theme with a click of a button. Choose from Hacker, Flower, and Cyberpunk.
+version: 1.0.0
+settings_sections: []
