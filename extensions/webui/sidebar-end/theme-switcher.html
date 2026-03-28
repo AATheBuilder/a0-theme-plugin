@@ -38,6 +38,10 @@
       <option value="hacker" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker'" style="color: #000;">Hacker</option>
       <option value="flower" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'flower'" style="color: #000;">Flower</option>
       <option value="cyberpunk" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'cyberpunk'" style="color: #000;">Cyberpunk</option>
+      <option value="nord" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'nord'" style="color: #000;">Nord (Arctic)</option>
+      <option value="amber" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'amber'" style="color: #000;">Retro Amber</option>
+      <option value="dracula" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'dracula'" style="color: #000;">Dracula</option>
+      <option value="oled" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'oled'" style="color: #000;">Pure OLED</option>
     </select>
   </div>
 </div>
@@ -103,6 +107,83 @@
 
   body[data-theme="cyberpunk"] {
       text-shadow: 0 0 4px rgba(0,255,204,0.5);
+  }
+
+  /* Nord Theme */
+  body[data-theme="nord"] {
+    --color-background: #2e3440;
+    --color-text: #eceff4;
+    --color-text-muted: #d8dee9;
+    --color-primary: #88c0d0;
+    --color-secondary: #81a1c1;
+    --color-accent: #5e81ac;
+    --color-message-bg: #3b4252;
+    --color-message-text: #eceff4;
+    --color-panel: #3b4252;
+    --color-border: #4c566a;
+    --color-input: #2e3440;
+    --color-input-focus: #434c5e;
+    --color-chat-background: #2e3440;
+    --color-table-row: #3b4252;
+  }
+
+  /* Retro Amber Theme */
+  body[data-theme="amber"] {
+    --color-background: #0a0806;
+    --color-text: #ffb000;
+    --color-text-muted: #cc8c00;
+    --color-primary: #ffb000;
+    --color-secondary: #cc8c00;
+    --color-accent: #ffb000;
+    --color-message-bg: #14100c;
+    --color-message-text: #ffb000;
+    --color-panel: #14100c;
+    --color-border: #ffb000;
+    --color-input: #0a0806;
+    --color-input-focus: #1a150f;
+    --color-chat-background: #0a0806;
+    --color-table-row: #14100c;
+    --font-family-main: "Courier New", Courier, monospace;
+  }
+  
+  body[data-theme="amber"] {
+      text-shadow: 0 0 2px rgba(255,176,0,0.5);
+  }
+
+  /* Dracula Theme */
+  body[data-theme="dracula"] {
+    --color-background: #282a36;
+    --color-text: #f8f8f2;
+    --color-text-muted: #6272a4;
+    --color-primary: #ff5555;
+    --color-secondary: #bd93f9;
+    --color-accent: #ff79c6;
+    --color-message-bg: #44475a;
+    --color-message-text: #f8f8f2;
+    --color-panel: #44475a;
+    --color-border: #bd93f9;
+    --color-input: #282a36;
+    --color-input-focus: #44475a;
+    --color-chat-background: #282a36;
+    --color-table-row: #44475a;
+  }
+
+  /* OLED Theme */
+  body[data-theme="oled"] {
+    --color-background: #000000;
+    --color-text: #ffffff;
+    --color-text-muted: #cccccc;
+    --color-primary: #ffffff;
+    --color-secondary: #aaaaaa;
+    --color-accent: #ffffff;
+    --color-message-bg: #111111;
+    --color-message-text: #ffffff;
+    --color-panel: #111111;
+    --color-border: #333333;
+    --color-input: #000000;
+    --color-input-focus: #222222;
+    --color-chat-background: #000000;
+    --color-table-row: #111111;
   }
   
   /* Make sure the selector itself stays visible */
