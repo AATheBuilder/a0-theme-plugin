@@ -1,12 +1,12 @@
-# 🎨 Theme Switcher for AgentZero
+# 🎭 Persona: Immersive UI Themes for AgentZero
 
-A community plugin for [AgentZero](https://github.com/agent0ai/agent-zero) that allows you to instantly change the look and feel of your agent interface.
+Level up your workspace with **Persona**! This community plugin allows you to instantly transform your AgentZero interface into a high-octane Cyberpunk terminal, an elite Hacker environment, or a serene Flower garden. 
 
-## 🌟 Features
+## 🌟 Why Persona?
 
-- **Instant Switching**: Change themes with a single click from the sidebar.
-- **Native Integration**: Seamlessly overrides AgentZero's built-in CSS variables for a perfect, native-feeling UI.
-- **Persistent Selection**: Your chosen theme is saved in `localStorage` and stays active across refreshes.
+- **Instant Transformation**: Change your entire UI personality with a single click from the sidebar.
+- **Deep Integration**: Not just a superficial skin—Persona natively overrides AgentZero's CSS variables for a seamless, premium experience.
+- **Smart Persistence**: Your selected persona stays active across sessions and page refreshes.
 
 ## 🎭 Included Themes
 
@@ -19,7 +19,7 @@ A community plugin for [AgentZero](https://github.com/agent0ai/agent-zero) that 
 1. Install via the **AgentZero Plugin Hub**.
 2. Alternatively, clone this repo into your `usr/plugins/` directory:
    ```bash
-   git clone https://github.com/YourUsername/a0-theme-plugin.git theme_plugin
+   git clone https://github.com/AATheBuilder/a0-theme-plugin.git theme_plugin
    ```
 3. Enable "Theme Switcher" in **Settings → Plugins**.
 4. Refresh the page!

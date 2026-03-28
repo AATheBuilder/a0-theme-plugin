@@ -1,8 +1,6 @@
-<html>
-<head>
-  <script type="module">
-    // We register the store slightly differently in case Alpine is already loaded
-    document.addEventListener('alpine:init', () => {
+<script type="module">
+  const initThemeStore = () => {
+    if (!Alpine.store('themePlugin')) {
       Alpine.store('themePlugin', {
         currentTheme: localStorage.getItem('a0-theme') || 'default',
         setTheme(theme) {
@@ -14,101 +12,103 @@
           document.body.setAttribute('data-theme', this.currentTheme);
         }
       });
-      // Apply the theme on initialization
       Alpine.store('themePlugin').applyTheme();
-    });
-    
-    // In case alpine:init already fired before this script runs, apply theme manually
-    if (localStorage.getItem('a0-theme')) {
-        document.body.setAttribute('data-theme', localStorage.getItem('a0-theme'));
     }
-  </script>
-</head>
+  };
 
-<body>
-  <div x-data class="theme-switcher-container">
-    <div style="padding: 12px; margin-top: auto;">
-      <label style="font-size: 12px; opacity: 0.7; margin-bottom: 4px; display: block;">Select Theme:</label>
-      <select 
-        @change="$store.themePlugin.setTheme($event.target.value)" 
-        style="width: 100%; padding: 8px; border-radius: 6px; background: rgba(0,0,0,0.2); color: inherit; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;"
-      >
-        <option value="default" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'default'" style="color: #000;">Default</option>
-        <option value="hacker" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker'" style="color: #000;">Hacker</option>
-        <option value="flower" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'flower'" style="color: #000;">Flower</option>
-        <option value="cyberpunk" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'cyberpunk'" style="color: #000;">Cyberpunk</option>
-      </select>
-    </div>
+  if (window.Alpine) {
+    initThemeStore();
+  } else {
+    document.addEventListener('alpine:init', initThemeStore);
+  }
+  
+  if (localStorage.getItem('a0-theme')) {
+      document.body.setAttribute('data-theme', localStorage.getItem('a0-theme'));
+  }
+</script>
+
+<div x-data class="theme-switcher-container">
+  <div style="padding: 12px; margin-top: auto; border-top: 1px solid var(--color-border); background: var(--color-panel);">
+    <label style="font-size: 12px; opacity: 0.7; margin-bottom: 4px; display: block;">Select Theme:</label>
+    <select 
+      @change="$store.themePlugin.setTheme($event.target.value)" 
+      style="width: 100%; padding: 8px; border-radius: 6px; background: rgba(0,0,0,0.2); color: inherit; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;"
+    >
+      <option value="default" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'default'" style="color: #000;">Default</option>
+      <option value="hacker" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker'" style="color: #000;">Hacker</option>
+      <option value="flower" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'flower'" style="color: #000;">Flower</option>
+      <option value="cyberpunk" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'cyberpunk'" style="color: #000;">Cyberpunk</option>
+    </select>
   </div>
+</div>
 
-  <style>
-    /* Hacker Theme */
-    body[data-theme="hacker"] {
-      --color-background: #0d1117;
-      --color-text: #00ff00;
-      --color-text-muted: #00aa00;
-      --color-primary: #00ff00;
-      --color-secondary: #00aa00;
-      --color-accent: #00ff00;
-      --color-message-bg: #161b22;
-      --color-message-text: #00ff00;
-      --color-panel: #161b22;
-      --color-border: #00ff00;
-      --color-input: #0d1117;
-      --color-input-focus: #161b22;
-      --color-chat-background: #0d1117;
-      --font-family-main: "Courier New", Courier, monospace;
-    }
-    
-    body[data-theme="hacker"] {
-        text-shadow: 0 0 2px rgba(0,255,0,0.5);
-    }
+<style>
+  /* Hacker Theme */
+  body[data-theme="hacker"] {
+    --color-background: #0d1117;
+    --color-text: #00ff00;
+    --color-text-muted: #00aa00;
+    --color-primary: #00ff00;
+    --color-secondary: #00aa00;
+    --color-accent: #00ff00;
+    --color-message-bg: #161b22;
+    --color-message-text: #00ff00;
+    --color-panel: #161b22;
+    --color-border: #00ff00;
+    --color-input: #0d1117;
+    --color-input-focus: #161b22;
+    --color-chat-background: #0d1117;
+    --font-family-main: "Courier New", Courier, monospace;
+  }
+  
+  body[data-theme="hacker"] {
+      text-shadow: 0 0 2px rgba(0,255,0,0.5);
+  }
 
-    /* Flower Theme */
-    body[data-theme="flower"] {
-      --color-background: #fff0f5;
-      --color-text: #8B0A50;
-      --color-text-muted: #db7093;
-      --color-primary: #ffb6c1;
-      --color-secondary: #db7093;
-      --color-accent: #ff69b4;
-      --color-message-bg: #ffe4e1;
-      --color-message-text: #8B0A50;
-      --color-panel: #ffe4e1;
-      --color-border: #ffb6c1;
-      --color-input: #fff0f5;
-      --color-input-focus: #ffe4e1;
-      --color-chat-background: #fff0f5;
-      --color-table-row: #ffe4e1;
-    }
+  /* Flower Theme */
+  body[data-theme="flower"] {
+    --color-background: #fff0f5;
+    --color-text: #8B0A50;
+    --color-text-muted: #db7093;
+    --color-primary: #ffb6c1;
+    --color-secondary: #db7093;
+    --color-accent: #ff69b4;
+    --color-message-bg: #ffe4e1;
+    --color-message-text: #8B0A50;
+    --color-panel: #ffe4e1;
+    --color-border: #ffb6c1;
+    --color-input: #fff0f5;
+    --color-input-focus: #ffe4e1;
+    --color-chat-background: #fff0f5;
+    --color-table-row: #ffe4e1;
+  }
 
-    /* Cyberpunk Theme */
-    body[data-theme="cyberpunk"] {
-      --color-background: #0b0213;
-      --color-text: #00ffcc;
-      --color-text-muted: #e900ff;
-      --color-primary: #e900ff;
-      --color-secondary: #00ffcc;
-      --color-accent: #00ffcc;
-      --color-message-bg: #1a082a;
-      --color-message-text: #00ffcc;
-      --color-panel: #1a082a;
-      --color-border: #e900ff;
-      --color-input: #0b0213;
-      --color-input-focus: #1a082a;
-      --color-chat-background: #0b0213;
-      --color-table-row: #1a082a;
-    }
+  /* Cyberpunk Theme */
+  body[data-theme="cyberpunk"] {
+    --color-background: #0b0213;
+    --color-text: #00ffcc;
+    --color-text-muted: #e900ff;
+    --color-primary: #e900ff;
+    --color-secondary: #00ffcc;
+    --color-accent: #00ffcc;
+    --color-message-bg: #1a082a;
+    --color-message-text: #00ffcc;
+    --color-panel: #1a082a;
+    --color-border: #e900ff;
+    --color-input: #0b0213;
+    --color-input-focus: #1a082a;
+    --color-chat-background: #0b0213;
+    --color-table-row: #1a082a;
+  }
 
-    body[data-theme="cyberpunk"] {
-        text-shadow: 0 0 4px rgba(0,255,204,0.5);
-    }
-    
-    /* Make sure the selector itself stays visible */
-    .theme-switcher-container {
-      z-index: 9999;
-      position: relative;
-    }
-  </style>
-</body>
-</html>
+  body[data-theme="cyberpunk"] {
+      text-shadow: 0 0 4px rgba(0,255,204,0.5);
+  }
+  
+  /* Make sure the selector itself stays visible */
+  .theme-switcher-container {
+    z-index: 9999;
+    position: relative;
+    width: 100%;
+  }
+</style>

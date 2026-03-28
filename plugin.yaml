@@ -1,5 +1,5 @@
 name: theme_plugin
-title: Theme Switcher
-description: Allows users to change their AgentZero theme with a click of a button. Choose from Hacker, Flower, and Cyberpunk.
+title: "🎨 Persona: Immersive UI Themes"
+description: "Transform your AgentZero experience with stunning visual personas. Choose from high-octane Cyberpunk, elite Hacker, or serene Flower themes—all with a single click. Seamlessly integrated for a premium, native feel."
 version: 1.0.0
 settings_sections: []
