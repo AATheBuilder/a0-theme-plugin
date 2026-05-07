@@ -30,166 +30,633 @@
 <div x-data class="theme-switcher-container">
   <div style="padding: 12px; margin-top: auto; border-top: 1px solid var(--color-border); background: var(--color-panel);">
     <label style="font-size: 12px; opacity: 0.7; margin-bottom: 4px; display: block;">Select Theme:</label>
-    <select 
-      @change="$store.themePlugin.setTheme($event.target.value)" 
-      style="width: 100%; padding: 8px; border-radius: 6px; background: rgba(0,0,0,0.2); color: inherit; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;"
-    >
-      <option value="default" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'default'" style="color: #000;">Default</option>
-      <option value="hacker" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker'" style="color: #000;">Hacker</option>
-      <option value="flower" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'flower'" style="color: #000;">Flower</option>
-      <option value="cyberpunk" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'cyberpunk'" style="color: #000;">Cyberpunk</option>
-      <option value="nord" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'nord'" style="color: #000;">Nord (Arctic)</option>
-      <option value="amber" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'amber'" style="color: #000;">Retro Amber</option>
-      <option value="dracula" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'dracula'" style="color: #000;">Dracula</option>
-      <option value="oled" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'oled'" style="color: #000;">Pure OLED</option>
+    <select @change="$store.themePlugin.setTheme($event.target.value)" style="width: 100%; padding: 8px; border-radius: 6px; background: rgba(0,0,0,0.2); color: inherit; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">
+
+      <!-- Hacker Variants (VSCode Port) -->
+      <optgroup label="── Hacker Variants ──">
+        <option value="hacker-lime" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker-lime'" style="color: #000;">Hacker Lime</option>
+        <option value="hacker-cyan" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker-cyan'" style="color: #000;">Hacker Cyan</option>
+        <option value="hacker-magenta" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker-magenta'" style="color: #000;">Hacker Magenta</option>
+        <option value="hacker-amber" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker-amber'" style="color: #000;">Hacker Amber</option>
+      </optgroup>
+      
+      <!-- IDE Themes -->
+      <optgroup label="── IDE Themes ──">
+        <option value="visual-studio" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'visual-studio'" style="color: #000;">Visual Studio</option>
+        <option value="intellij" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'intellij'" style="color: #000;">IntelliJ Darcula</option>
+        <option value="sublime" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'sublime'" style="color: #000;">Sublime Monokai</option>
+        <option value="atom" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'atom'" style="color: #000;">Atom One Dark</option>
+        <option value="eclipse" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'eclipse'" style="color: #000;">Eclipse Dark</option>
+        <option value="netbeans" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'netbeans'" style="color: #000;">NetBeans Dark</option>
+        <option value="notepad-plus-plus" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'notepad-plus-plus'" style="color: #000;">Notepad++</option>
+        <option value="vim" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'vim'" style="color: #000;">Vim Dark</option>
+      </optgroup>
+      
+      <!-- Original Themes -->
+      <optgroup label="── Original Themes ──">
+        <option value="default" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'default'" style="color: #000;">Default</option>
+        <option value="hacker" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'hacker'" style="color: #000;">Hacker</option>
+        <option value="flower" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'flower'" style="color: #000;">Flower</option>
+        <option value="cyberpunk" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'cyberpunk'" style="color: #000;">Cyberpunk</option>
+        <option value="nord" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'nord'" style="color: #000;">Nord (Arctic)</option>
+        <option value="amber" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'amber'" style="color: #000;">Retro Amber</option>
+        <option value="dracula" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'dracula'" style="color: #000;">Dracula</option>
+        <option value="oled" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'oled'" style="color: #000;">Pure OLED</option>
+      </optgroup>
+      
+      <!-- New Themes -->
+      <optgroup label="── New Themes ──">
+        <option value="forest" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'forest'" style="color: #000;">Forest</option>
+        <option value="ocean" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'ocean'" style="color: #000;">Ocean</option>
+        <option value="sunset" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'sunset'" style="color: #000;">Sunset</option>
+        <option value="lavender" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'lavender'" style="color: #000;">Lavender</option>
+        <option value="coffee" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'coffee'" style="color: #000;">Coffee</option>
+        <option value="midnight" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'midnight'" style="color: #000;">Midnight</option>
+        <option value="autumn" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'autumn'" style="color: #000;">Autumn</option>
+        <option value="mint" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'mint'" style="color: #000;">Mint</option>
+        <option value="arctic" :selected="$store.themePlugin && $store.themePlugin.currentTheme === 'arctic'" style="color: #000;">Arctic</option>
+      </optgroup>
     </select>
   </div>
 </div>
 
 <style>
-  /* Hacker Theme */
-  body[data-theme="hacker"] {
-    --color-background: #0d1117;
-    --color-text: #00ff00;
-    --color-text-muted: #00aa00;
-    --color-primary: #00ff00;
-    --color-secondary: #00aa00;
-    --color-accent: #00ff00;
-    --color-message-bg: #161b22;
-    --color-message-text: #00ff00;
-    --color-panel: #161b22;
-    --color-border: #00ff00;
-    --color-input: #0d1117;
-    --color-input-focus: #161b22;
-    --color-chat-background: #0d1117;
-    --font-family-main: "Courier New", Courier, monospace;
-  }
-  
-  body[data-theme="hacker"] {
-      text-shadow: 0 0 2px rgba(0,255,0,0.5);
-  }
 
-  /* Flower Theme */
-  body[data-theme="flower"] {
-    --color-background: #fff0f5;
-    --color-text: #8B0A50;
-    --color-text-muted: #db7093;
-    --color-primary: #ffb6c1;
-    --color-secondary: #db7093;
-    --color-accent: #ff69b4;
-    --color-message-bg: #ffe4e1;
-    --color-message-text: #8B0A50;
-    --color-panel: #ffe4e1;
-    --color-border: #ffb6c1;
-    --color-input: #fff0f5;
-    --color-input-focus: #ffe4e1;
-    --color-chat-background: #fff0f5;
-    --color-table-row: #ffe4e1;
-  }
+/* Hacker Lime Theme */
+body[data-theme="hacker-lime"] {
+  --color-background: #0a0e14;
+  --color-text: #e6e6e6;
+  --color-text-muted: #6e7681;
+  --color-primary: #9fef00;
+  --color-secondary: #00ff9f;
+  --color-accent: #9fef00;
+  --color-message-bg: #1a1f2e;
+  --color-message-text: #9fef00;
+  --color-panel: #0f1419;
+  --color-border: #2d3748;
+  --color-input: #0a0e14;
+  --color-input-focus: #1a1f2e;
+  --color-chat-background: #0a0e14;
+  --color-table-row: #0f1419;
+  --font-family-main: Consolas, "Lucida Console", Monaco, monospace;
+}
 
-  /* Cyberpunk Theme */
-  body[data-theme="cyberpunk"] {
-    --color-background: #0b0213;
-    --color-text: #00ffcc;
-    --color-text-muted: #e900ff;
-    --color-primary: #e900ff;
-    --color-secondary: #00ffcc;
-    --color-accent: #00ffcc;
-    --color-message-bg: #1a082a;
-    --color-message-text: #00ffcc;
-    --color-panel: #1a082a;
-    --color-border: #e900ff;
-    --color-input: #0b0213;
-    --color-input-focus: #1a082a;
-    --color-chat-background: #0b0213;
-    --color-table-row: #1a082a;
-  }
+/* Hacker Cyan Theme */
+body[data-theme="hacker-cyan"] {
+  --color-background: #0a0e14;
+  --color-text: #e6e6e6;
+  --color-text-muted: #5a7a8a;
+  --color-primary: #00ffff;
+  --color-secondary: #7dd3c0;
+  --color-accent: #00e5e5;
+  --color-message-bg: #1a1f2e;
+  --color-message-text: #00ffff;
+  --color-panel: #0f1419;
+  --color-border: #2d3748;
+  --color-input: #0a0e14;
+  --color-input-focus: #1a1f2e;
+  --color-chat-background: #0a0e14;
+  --color-table-row: #0f1419;
+  --font-family-main: Consolas, "Lucida Console", Monaco, monospace;
+}
 
-  body[data-theme="cyberpunk"] {
-      text-shadow: 0 0 4px rgba(0,255,204,0.5);
-  }
+/* Hacker Magenta Theme */
+body[data-theme="hacker-magenta"] {
+  --color-background: #0a0e14;
+  --color-text: #e6e6e6;
+  --color-text-muted: #7a5a8a;
+  --color-primary: #ff00ff;
+  --color-secondary: #ff79c6;
+  --color-accent: #e900ff;
+  --color-message-bg: #1a1f2e;
+  --color-message-text: #ff00ff;
+  --color-panel: #0f1419;
+  --color-border: #2d3748;
+  --color-input: #0a0e14;
+  --color-input-focus: #1a1f2e;
+  --color-chat-background: #0a0e14;
+  --color-table-row: #0f1419;
+  --font-family-main: Consolas, "Lucida Console", Monaco, monospace;
+}
 
-  /* Nord Theme */
-  body[data-theme="nord"] {
-    --color-background: #2e3440;
-    --color-text: #eceff4;
-    --color-text-muted: #d8dee9;
-    --color-primary: #88c0d0;
-    --color-secondary: #81a1c1;
-    --color-accent: #5e81ac;
-    --color-message-bg: #3b4252;
-    --color-message-text: #eceff4;
-    --color-panel: #3b4252;
-    --color-border: #4c566a;
-    --color-input: #2e3440;
-    --color-input-focus: #434c5e;
-    --color-chat-background: #2e3440;
-    --color-table-row: #3b4252;
-  }
+/* Hacker Amber Theme */
+body[data-theme="hacker-amber"] {
+  --color-background: #0a0e14;
+  --color-text: #e6e6e6;
+  --color-text-muted: #8a7a5a;
+  --color-primary: #ffaa00;
+  --color-secondary: #ffb74d;
+  --color-accent: #ff9800;
+  --color-message-bg: #1a1f2e;
+  --color-message-text: #ffaa00;
+  --color-panel: #0f1419;
+  --color-border: #2d3748;
+  --color-input: #0a0e14;
+  --color-input-focus: #1a1f2e;
+  --color-chat-background: #0a0e14;
+  --color-table-row: #0f1419;
+  --font-family-main: Consolas, "Lucida Console", Monaco, monospace;
+}
 
-  /* Retro Amber Theme */
-  body[data-theme="amber"] {
-    --color-background: #0a0806;
-    --color-text: #ffb000;
-    --color-text-muted: #cc8c00;
-    --color-primary: #ffb000;
-    --color-secondary: #cc8c00;
-    --color-accent: #ffb000;
-    --color-message-bg: #14100c;
-    --color-message-text: #ffb000;
-    --color-panel: #14100c;
-    --color-border: #ffb000;
-    --color-input: #0a0806;
-    --color-input-focus: #1a150f;
-    --color-chat-background: #0a0806;
-    --color-table-row: #14100c;
-    --font-family-main: "Courier New", Courier, monospace;
-  }
-  
-  body[data-theme="amber"] {
-      text-shadow: 0 0 2px rgba(255,176,0,0.5);
-  }
+/* ==========================================
+   IDE THEMES - EXACT DEFAULT FONTS
+   Font: MONOSPACE (Exact IDE defaults)
+   ========================================== */
 
-  /* Dracula Theme */
-  body[data-theme="dracula"] {
-    --color-background: #282a36;
-    --color-text: #f8f8f2;
-    --color-text-muted: #6272a4;
-    --color-primary: #ff5555;
-    --color-secondary: #bd93f9;
-    --color-accent: #ff79c6;
-    --color-message-bg: #44475a;
-    --color-message-text: #f8f8f2;
-    --color-panel: #44475a;
-    --color-border: #bd93f9;
-    --color-input: #282a36;
-    --color-input-focus: #44475a;
-    --color-chat-background: #282a36;
-    --color-table-row: #44475a;
-  }
+/* Visual Studio Theme
+   Default Font: Cascadia Code */
+body[data-theme="visual-studio"] {
+  --color-background: #1e1e1e;
+  --color-text: #d4d4d4;
+  --color-text-muted: #808080;
+  --color-primary: #569cd6;
+  --color-secondary: #4ec9b0;
+  --color-accent: #ce9178;
+  --color-message-bg: #252526;
+  --color-message-text: #d4d4d4;
+  --color-panel: #252526;
+  --color-border: #3c3c3c;
+  --color-input: #1e1e1e;
+  --color-input-focus: #252526;
+  --color-chat-background: #1e1e1e;
+  --color-table-row: #252526;
+  --font-family-main: "Cascadia Code", "Cascadia Mono", Consolas, monospace;
+}
 
-  /* OLED Theme */
-  body[data-theme="oled"] {
-    --color-background: #000000;
-    --color-text: #ffffff;
-    --color-text-muted: #cccccc;
-    --color-primary: #ffffff;
-    --color-secondary: #aaaaaa;
-    --color-accent: #ffffff;
-    --color-message-bg: #111111;
-    --color-message-text: #ffffff;
-    --color-panel: #111111;
-    --color-border: #333333;
-    --color-input: #000000;
-    --color-input-focus: #222222;
-    --color-chat-background: #000000;
-    --color-table-row: #111111;
-  }
-  
-  /* Make sure the selector itself stays visible */
-  .theme-switcher-container {
-    z-index: 9999;
-    position: relative;
-    width: 100%;
-  }
+/* IntelliJ Darcula Theme
+   Default Font: JetBrains Mono */
+body[data-theme="intellij"] {
+  --color-background: #2b2b2b;
+  --color-text: #a9b7c6;
+  --color-text-muted: #888888;
+  --color-primary: #d98c4a;
+  --color-secondary: #6a8759;
+  --color-accent: #a9b7c6;
+  --color-message-bg: #313131;
+  --color-message-text: #a9b7c6;
+  --color-panel: #313131;
+  --color-border: #4a4a4a;
+  --color-input: #2b2b2b;
+  --color-input-focus: #313131;
+  --color-chat-background: #2b2b2b;
+  --color-table-row: #313131;
+  --font-family-main: "JetBrains Mono", "DejaVu Sans Mono", Consolas, monospace;
+}
+
+/* Sublime Monokai Theme
+   Default Font: Monaco (Mac) / Consolas (Windows) */
+body[data-theme="sublime"] {
+  --color-background: #272822;
+  --color-text: #f8f8f2;
+  --color-text-muted: #75715e;
+  --color-primary: #66d9ef;
+  --color-secondary: #a6e22e;
+  --color-accent: #f92672;
+  --color-message-bg: #3e3d32;
+  --color-message-text: #f8f8f2;
+  --color-panel: #3e3d32;
+  --color-border: #49483e;
+  --color-input: #272822;
+  --color-input-focus: #3e3d32;
+  --color-chat-background: #272822;
+  --color-table-row: #3e3d32;
+  --font-family-main: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+/* Atom One Dark Theme
+   Default Font: Menlo (Mac) / Consolas (Windows) */
+body[data-theme="atom"] {
+  --color-background: #282c34;
+  --color-text: #abb2bf;
+  --color-text-muted: #7a7d85;
+  --color-primary: #61afef;
+  --color-secondary: #98c379;
+  --color-accent: #c678dd;
+  --color-message-bg: #21252b;
+  --color-message-text: #abb2bf;
+  --color-panel: #21252b;
+  --color-border: #3e4451;
+  --color-input: #282c34;
+  --color-input-focus: #21252b;
+  --color-chat-background: #282c34;
+  --color-table-row: #21252b;
+  --font-family-main: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+}
+
+/* Eclipse Dark Theme
+   Default Font: Courier New */
+body[data-theme="eclipse"] {
+  --color-background: #1e1e1e;
+  --color-text: #d4d4d4;
+  --color-text-muted: #808080;
+  --color-primary: #569cd6;
+  --color-secondary: #6a9955;
+  --color-accent: #ce9178;
+  --color-message-bg: #252526;
+  --color-message-text: #d4d4d4;
+  --color-panel: #252526;
+  --color-border: #3c3c3c;
+  --color-input: #1e1e1e;
+  --color-input-focus: #252526;
+  --color-chat-background: #1e1e1e;
+  --color-table-row: #252526;
+  --font-family-main: "Courier New", Courier, monospace;
+}
+
+/* NetBeans Dark Theme
+   Default Font: Liberation Mono */
+body[data-theme="netbeans"] {
+  --color-background: #1e1e1e;
+  --color-text: #e6e6e6;
+  --color-text-muted: #9e9e9e;
+  --color-primary: #7a7ae6;
+  --color-secondary: #5a5a5a;
+  --color-accent: #ff6b6b;
+  --color-message-bg: #252526;
+  --color-message-text: #e6e6e6;
+  --color-panel: #252526;
+  --color-border: #3c3c3c;
+  --color-input: #1e1e1e;
+  --color-input-focus: #252526;
+  --color-chat-background: #1e1e1e;
+  --color-table-row: #252526;
+  --font-family-main: "Liberation Mono", "DejaVu Sans Mono", "Ubuntu Mono", monospace;
+}
+
+/* Notepad++ Theme
+   Default Font: Courier New */
+body[data-theme="notepad-plus-plus"] {
+  --color-background: #1e1e1e;
+  --color-text: #dcdcdc;
+  --color-text-muted: #808080;
+  --color-primary: #569cd6;
+  --color-secondary: #6a9955;
+  --color-accent: #ce9178;
+  --color-message-bg: #252526;
+  --color-message-text: #dcdcdc;
+  --color-panel: #252526;
+  --color-border: #3c3c3c;
+  --color-input: #1e1e1e;
+  --color-input-focus: #252526;
+  --color-chat-background: #1e1e1e;
+  --color-table-row: #252526;
+  --font-family-main: "Courier New", Courier, monospace;
+}
+
+/* Vim Dark Theme
+   Default Font: Liberation Mono */
+body[data-theme="vim"] {
+  --color-background: #1c1c1c;
+  --color-text: #d0d0d0;
+  --color-text-muted: #808080;
+  --color-primary: #5fa8a8;
+  --color-secondary: #87af87;
+  --color-accent: #ff8700;
+  --color-message-bg: #262626;
+  --color-message-text: #d0d0d0;
+  --color-panel: #262626;
+  --color-border: #3a3a3a;
+  --color-input: #1c1c1c;
+  --color-input-focus: #262626;
+  --color-chat-background: #1c1c1c;
+  --color-table-row: #262626;
+  --font-family-main: "Liberation Mono", "DejaVu Sans Mono", Monaco, monospace;
+}
+
+/* ==========================================
+   ORIGINAL THEMES (Non-Hacker)
+   Font: SANS-SERIF (Websafe)
+   ========================================== */
+
+/* Hacker Theme - Terminal Green
+   Font: MONOSPACE (Classic terminal) */
+body[data-theme="hacker"] {
+  --color-background: #0d1117;
+  --color-text: #00ff00;
+  --color-text-muted: #00aa00;
+  --color-primary: #00ff00;
+  --color-secondary: #00aa00;
+  --color-accent: #00ff00;
+  --color-message-bg: #161b22;
+  --color-message-text: #00ff00;
+  --color-panel: #161b22;
+  --color-border: #00ff00;
+  --color-input: #0d1117;
+  --color-input-focus: #161b22;
+  --color-chat-background: #0d1117;
+  --color-table-row: #161b22;
+  --font-family-main: "Lucida Console", Monaco, Consolas, monospace;
+}
+
+/* Flower Theme
+   Font: SANS-SERIF - Tahoma (soft, elegant) */
+body[data-theme="flower"] {
+  --color-background: #fff0f5;
+  --color-text: #6B0A3A;
+  --color-text-muted: #8B4A6A;
+  --color-primary: #C43A6A;
+  --color-secondary: #E87A9A;
+  --color-accent: #D44A7A;
+  --color-message-bg: #ffe4e1;
+  --color-message-text: #6B0A3A;
+  --color-panel: #ffe4e1;
+  --color-border: #ffb6c1;
+  --color-input: #fff0f5;
+  --color-input-focus: #ffe4e1;
+  --color-chat-background: #fff0f5;
+  --color-table-row: #ffe4e1;
+  --font-family-main: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Cyberpunk Theme
+   Font: SANS-SERIF - Trebuchet MS (angular, futuristic) */
+body[data-theme="cyberpunk"] {
+  --color-background: #0b0213;
+  --color-text: #00ffcc;
+  --color-text-muted: #e900ff;
+  --color-primary: #e900ff;
+  --color-secondary: #00ffcc;
+  --color-accent: #00ffcc;
+  --color-message-bg: #1a082a;
+  --color-message-text: #00ffcc;
+  --color-panel: #1a082a;
+  --color-border: #e900ff;
+  --color-input: #0b0213;
+  --color-input-focus: #1a082a;
+  --color-chat-background: #0b0213;
+  --color-table-row: #1a082a;
+  --font-family-main: "Trebuchet MS", "Arial Black", Arial, sans-serif;
+}
+
+/* Nord Theme
+   Font: SANS-SERIF - Segoe UI (clean Scandinavian) */
+body[data-theme="nord"] {
+  --color-background: #2e3440;
+  --color-text: #eceff4;
+  --color-text-muted: #d8dee9;
+  --color-primary: #88c0d0;
+  --color-secondary: #81a1c1;
+  --color-accent: #5e81ac;
+  --color-message-bg: #3b4252;
+  --color-message-text: #eceff4;
+  --color-panel: #3b4252;
+  --color-border: #4c566a;
+  --color-input: #2e3440;
+  --color-input-focus: #434c5e;
+  --color-chat-background: #2e3440;
+  --color-table-row: #3b4252;
+  --font-family-main: "Segoe UI", Tahoma, Geneva, sans-serif;
+}
+
+/* Retro Amber Theme
+   Font: SANS-SERIF - Verdana (warm, rounded) */
+body[data-theme="amber"] {
+  --color-background: #0a0806;
+  --color-text: #ffb000;
+  --color-text-muted: #cc8c00;
+  --color-primary: #ffb000;
+  --color-secondary: #cc8c00;
+  --color-accent: #ffb000;
+  --color-message-bg: #14100c;
+  --color-message-text: #ffb000;
+  --color-panel: #14100c;
+  --color-border: #ffb000;
+  --color-input: #0a0806;
+  --color-input-focus: #1a150f;
+  --color-chat-background: #0a0806;
+  --color-table-row: #14100c;
+  --font-family-main: Verdana, Geneva, Arial, sans-serif;
+}
+
+/* Dracula Theme
+   Font: SANS-SERIF - Helvetica Neue (modern, clean) */
+body[data-theme="dracula"] {
+  --color-background: #282a36;
+  --color-text: #f8f8f2;
+  --color-text-muted: #6272a4;
+  --color-primary: #ff5555;
+  --color-secondary: #bd93f9;
+  --color-accent: #ff79c6;
+  --color-message-bg: #44475a;
+  --color-message-text: #f8f8f2;
+  --color-panel: #44475a;
+  --color-border: #bd93f9;
+  --color-input: #282a36;
+  --color-input-focus: #44475a;
+  --color-chat-background: #282a36;
+  --color-table-row: #44475a;
+  --font-family-main: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* OLED Theme
+   Font: SANS-SERIF - Arial (clean, universal) */
+body[data-theme="oled"] {
+  --color-background: #000000;
+  --color-text: #ffffff;
+  --color-text-muted: #cccccc;
+  --color-primary: #ffffff;
+  --color-secondary: #aaaaaa;
+  --color-accent: #ffffff;
+  --color-message-bg: #111111;
+  --color-message-text: #ffffff;
+  --color-panel: #111111;
+  --color-border: #333333;
+  --color-input: #000000;
+  --color-input-focus: #222222;
+  --color-chat-background: #000000;
+  --color-table-row: #111111;
+  --font-family-main: Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================
+   NEW THEMES
+   Font: SANS-SERIF (Websafe)
+   ========================================== */
+
+/* Forest Theme
+   Font: SANS-SERIF - Calibri (natural, organic) */
+body[data-theme="forest"] {
+  --color-background: #1a2e1a;
+  --color-text: #e8f5e8;
+  --color-text-muted: #8fbc8f;
+  --color-primary: #4caf50;
+  --color-secondary: #81c784;
+  --color-accent: #a5d6a7;
+  --color-message-bg: #2a3e2a;
+  --color-message-text: #e8f5e8;
+  --color-panel: #2a3e2a;
+  --color-border: #385338;
+  --color-input: #1a2e1a;
+  --color-input-focus: #2a3e2a;
+  --color-chat-background: #1a2e1a;
+  --color-table-row: #2a3e2a;
+  --font-family-main: Calibri, Candara, Segoe UI, sans-serif;
+}
+
+/* Ocean Theme
+   Font: SANS-SERIF - Century Gothic (modern, fluid) */
+body[data-theme="ocean"] {
+  --color-background: #0a1628;
+  --color-text: #e0f7fa;
+  --color-text-muted: #4dd0e1;
+  --color-primary: #00bcd4;
+  --color-secondary: #26c6da;
+  --color-accent: #4dd0e1;
+  --color-message-bg: #122640;
+  --color-message-text: #e0f7fa;
+  --color-panel: #122640;
+  --color-border: #1e5f74;
+  --color-input: #0a1628;
+  --color-input-focus: #122640;
+  --color-chat-background: #0a1628;
+  --color-table-row: #122640;
+  --font-family-main: "Century Gothic", "Tw Cen MT", Geneva, sans-serif;
+}
+
+/* Sunset Theme
+   Font: SANS-SERIF - Impact (bold, warm) */
+body[data-theme="sunset"] {
+  --color-background: #1a0a14;
+  --color-text: #ffccbc;
+  --color-text-muted: #ff8a65;
+  --color-primary: #ff7043;
+  --color-secondary: #ffab91;
+  --color-accent: #ff5722;
+  --color-message-bg: #2a1420;
+  --color-message-text: #ffccbc;
+  --color-panel: #2a1420;
+  --color-border: #bf360c;
+  --color-input: #1a0a14;
+  --color-input-focus: #2a1420;
+  --color-chat-background: #1a0a14;
+  --color-table-row: #2a1420;
+  --font-family-main: Impact, "Arial Black", Haettenschweiler, sans-serif;
+}
+
+/* Lavender Theme
+   Font: SANS-SERIF - Century Gothic (elegant, soft) */
+body[data-theme="lavender"] {
+  --color-background: #f5f0ff;
+  --color-text: #3d2a5a;
+  --color-text-muted: #6a4a9a;
+  --color-primary: #5a3aaa;
+  --color-secondary: #9a7ad0;
+  --color-accent: #4a2aaa;
+  --color-message-bg: #ebe4ff;
+  --color-message-text: #3d2a5a;
+  --color-panel: #ebe4ff;
+  --color-border: #b388ff;
+  --color-input: #f5f0ff;
+  --color-input-focus: #ebe4ff;
+  --color-chat-background: #f5f0ff;
+  --color-table-row: #ebe4ff;
+  --font-family-main: "Century Gothic", "Tw Cen MT", Geneva, sans-serif;
+}
+
+/* Coffee Theme
+   Font: SANS-SERIF - Tahoma (warm, classic) */
+body[data-theme="coffee"] {
+  --color-background: #f5f0e8;
+  --color-text: #3d2914;
+  --color-text-muted: #6a5040;
+  --color-primary: #5d3c31;
+  --color-secondary: #8d6e63;
+  --color-accent: #4e342e;
+  --color-message-bg: #ebe4d8;
+  --color-message-text: #3d2914;
+  --color-panel: #ebe4d8;
+  --color-border: #a0826a;
+  --color-input: #f5f0e8;
+  --color-input-focus: #ebe4d8;
+  --color-chat-background: #f5f0e8;
+  --color-table-row: #ebe4d8;
+  --font-family-main: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Midnight Theme
+   Font: SANS-SERIF - Lucida Sans (clean, modern) */
+body[data-theme="midnight"] {
+  --color-background: #0d0d1a;
+  --color-text: #c8c8e8;
+  --color-text-muted: #8888aa;
+  --color-primary: #6a6aff;
+  --color-secondary: #8888dd;
+  --color-accent: #4a4aff;
+  --color-message-bg: #1a1a2e;
+  --color-message-text: #c8c8e8;
+  --color-panel: #1a1a2e;
+  --color-border: #3a3a5e;
+  --color-input: #0d0d1a;
+  --color-input-focus: #1a1a2e;
+  --color-chat-background: #0d0d1a;
+  --color-table-row: #1a1a2e;
+  --font-family-main: "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+}
+
+/* Autumn Theme
+   Font: SANS-SERIF - Candara (warm, seasonal) */
+body[data-theme="autumn"] {
+  --color-background: #2a1a0a;
+  --color-text: #ffd54f;
+  --color-text-muted: #ffb74d;
+  --color-primary: #ff9800;
+  --color-secondary: #ffa726;
+  --color-accent: #f57c00;
+  --color-message-bg: #3a2a1a;
+  --color-message-text: #ffd54f;
+  --color-panel: #3a2a1a;
+  --color-border: #8d6e63;
+  --color-input: #2a1a0a;
+  --color-input-focus: #3a2a1a;
+  --color-chat-background: #2a1a0a;
+  --color-table-row: #3a2a1a;
+  --font-family-main: Candara, Calibri, Segoe UI, sans-serif;
+}
+
+/* Mint Theme
+   Font: SANS-SERIF - Segoe UI (fresh, clean) */
+body[data-theme="mint"] {
+  --color-background: #e8f5f0;
+  --color-text: #1a4a3a;
+  --color-text-muted: #3a6a5a;
+  --color-primary: #1a6a5a;
+  --color-secondary: #4db6ac;
+  --color-accent: #00897b;
+  --color-message-bg: #d8f0e8;
+  --color-message-text: #1a4a3a;
+  --color-panel: #d8f0e8;
+  --color-border: #26a69a;
+  --color-input: #e8f5f0;
+  --color-input-focus: #d8f0e8;
+  --color-chat-background: #e8f5f0;
+  --color-table-row: #d8f0e8;
+  --font-family-main: "Segoe UI", Candara, Calibri, sans-serif;
+}
+
+/* Arctic Theme
+   Font: SANS-SERIF - Arial (cool, crisp) */
+body[data-theme="arctic"] {
+  --color-background: #f0f8ff;
+  --color-text: #1a3a5a;
+  --color-text-muted: #3a5a7a;
+  --color-primary: #1a5aaa;
+  --color-secondary: #64b5f6;
+  --color-accent: #1976d2;
+  --color-message-bg: #e0f0ff;
+  --color-message-text: #1a3a5a;
+  --color-panel: #e0f0ff;
+  --color-border: #2196f3;
+  --color-input: #f0f8ff;
+  --color-input-focus: #e0f0ff;
+  --color-chat-background: #f0f8ff;
+  --color-table-row: #e0f0ff;
+  --font-family-main: Arial, Helvetica, sans-serif;
+}
+
+/* Make sure the selector itself stays visible */
+.theme-switcher-container {
+  z-index: 9999;
+  position: relative;
+  width: 100%;
+}
 </style>
